@@ -1,0 +1,453 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Custom tactile palette */
+  --color-rust: var(--rust);
+  --color-rust-dark: var(--rust-dark);
+  --color-rust-light: var(--rust-light);
+  --color-obsidian: var(--obsidian);
+  --color-obsidian-deep: var(--obsidian-deep);
+  --color-parchment: var(--parchment);
+  --color-parchment-muted: var(--parchment-muted);
+  --color-sage: var(--sage);
+  --color-sand: var(--sand);
+  --color-terracotta: var(--terracotta);
+  --color-cream: var(--cream);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+}
+
+:root {
+  /* Warm tactile palette — "Rust + Obsidian + Parchment" */
+  --rust: #C95A32;
+  --rust-dark: #9A3E1D;
+  --rust-light: #E27E5A;
+  --obsidian: #0E0E12;
+  --obsidian-deep: #050506;
+  --parchment: #F4EFE6;
+  --parchment-muted: #AFA897;
+  --sage: #6E8E75;
+  --sand: #C9AF85;
+  --terracotta: #C84630;
+  --cream: #FAF7F0;
+  --surface: #0E0E12;
+  --surface-raised: #15151A;
+
+  --background: #08080A;
+  --foreground: #F4EFE6;
+  --card: #0E0E12;
+  --card-foreground: #F4EFE6;
+  --popover: #15151A;
+  --popover-foreground: #F4EFE6;
+  --primary: #C95A32;
+  --primary-foreground: #FAF7F2;
+  --secondary: #16161C;
+  --secondary-foreground: #F4EFE6;
+  --muted: #16161C;
+  --muted-foreground: #AFA897;
+  --accent: #1C1C24;
+  --accent-foreground: #F4EFE6;
+  --destructive: #C84630;
+  --border: #1E1E26;
+  --input: #1E1E26;
+  --ring: #C95A32;
+  --chart-1: #C95A32;
+  --chart-2: #6E8E75;
+  --chart-3: #C9AF85;
+  --chart-4: #5A7A8E; /* Slate blue replacing chart-4 */
+  --chart-5: #8A7D6C; /* Warm parchment grey replacing purple */
+  --radius: 0.625rem;
+  --sidebar: #050506;
+  --sidebar-foreground: #FAF7F2;
+  --sidebar-primary: #C95A32;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #15151A;
+  --sidebar-accent-foreground: #FAF7F2;
+  --sidebar-border: #1E1E26;
+  --sidebar-ring: #C95A32;
+}
+
+/* No light mode — this app is dark-only */
+.dark {
+  --background: #08080A;
+  --foreground: #F4EFE6;
+  --card: #0E0E12;
+  --card-foreground: #F4EFE6;
+  --popover: #15151A;
+  --popover-foreground: #F4EFE6;
+  --primary: #C95A32;
+  --primary-foreground: #FAF7F2;
+  --secondary: #16161C;
+  --secondary-foreground: #F4EFE6;
+  --muted: #16161C;
+  --muted-foreground: #AFA897;
+  --accent: #1C1C24;
+  --accent-foreground: #F4EFE6;
+  --destructive: #C84630;
+  --border: #1E1E26;
+  --input: #1E1E26;
+  --ring: #C95A32;
+  --chart-1: #C95A32;
+  --chart-2: #6E8E75;
+  --chart-3: #C9AF85;
+  --chart-4: #5A7A8E;
+  --chart-5: #8A7D6C;
+  --sidebar: #050506;
+  --sidebar-foreground: #FAF7F2;
+  --sidebar-primary: #C95A32;
+  --sidebar-primary-foreground: #FAF7F2;
+  --sidebar-accent: #15151A;
+  --sidebar-accent-foreground: #FAF7F2;
+  --sidebar-border: #1E1E26;
+  --sidebar-ring: #C95A32;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CUSTOM ANIMATIONS
+   ═══════════════════════════════════════════ */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+@keyframes counter-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 168, 83, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px 2px rgba(212, 168, 83, 0.08);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   UTILITY CLASSES (Optimized for performance)
+   ═══════════════════════════════════════════ */
+
+.animate-fade-up {
+  animation: fade-up 0.15s ease-out both;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.15s ease-out both;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 90, 50, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-counter-up {
+  animation: counter-up 0.2s ease-out both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.15s ease-out both;
+}
+
+/* Instant load for stagger lists to prevent frame drops */
+.stagger-children > * {
+  animation: fade-up 0.15s ease-out both;
+}
+
+/* Glass morphism card (Optimized: solid background to prevent shader lag) */
+.glass-card {
+  background: #0E0E12;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Elevated physical sticking out card */
+.sticking-out-card {
+  background: #0E0E12;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 
+    0 12px 38px -4px rgba(0, 0, 0, 0.7), 
+    0 2px 8px -2px rgba(0, 0, 0, 0.5), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+/* Elevated card with tactile hover feedback */
+.card-hover-lift {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.card-hover-lift:hover {
+  border-color: rgba(201, 90, 50, 0.25) !important;
+  box-shadow: 
+    0 12px 38px -4px rgba(0, 0, 0, 0.75), 
+    0 2px 8px -2px rgba(0, 0, 0, 0.5), 
+    inset 0 1px 0px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Tactile Skeuomorphic Rust Button */
+.skeuo-btn-rust {
+  background: linear-gradient(180deg, #E27E5A 0%, #C95A32 50%, #A6411C 100%) !important;
+  color: #FAF7F2 !important;
+  border: 1px solid #822F11 !important;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1.5px 0px rgba(255, 255, 255, 0.25),
+    inset 0 -1.5px 0px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: 550;
+  transition: all 0.1s ease;
+}
+.skeuo-btn-rust:hover {
+  background: linear-gradient(180deg, #EA9271 0%, #D8683E 50%, #B84B23 100%) !important;
+  box-shadow: 
+    0 2px 6px rgba(201, 90, 50, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1.5px 0px rgba(255, 255, 255, 0.3),
+    inset 0 -1.5px 0px rgba(0, 0, 0, 0.25) !important;
+}
+.skeuo-btn-rust:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #B84B23 0%, #A6411C 60%, #822F11 100%) !important;
+  box-shadow: 
+    inset 0 1.5px 3px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Tactile Skeuomorphic Parchment Button */
+.skeuo-btn-parchment {
+  background: linear-gradient(180deg, #FAF7F0 0%, #E9E3D5 100%) !important;
+  color: #0E0E12 !important;
+  border: 1px solid #C4BCAE !important;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1.5px 0px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0px rgba(0, 0, 0, 0.1) !important;
+  font-weight: 550;
+  transition: all 0.1s ease;
+}
+.skeuo-btn-parchment:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1ECE0 100%) !important;
+  border-color: #B5AE9E !important;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 1.5px 0px rgba(255, 255, 255, 0.9) !important;
+}
+.skeuo-btn-parchment:active {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #E2DAC8 0%, #FAF7F0 100%) !important;
+  box-shadow: 
+    inset 0 1.5px 2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0px rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Neumorphic Inset (Concave) Recess Well */
+.neumorphic-inset {
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.02) !important;
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.8), 
+    inset -1px -1px 2px rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Skeuomorphic Separator Lines */
+.skeuo-line-horizontal {
+  height: 2px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 50%, rgba(255, 255, 255, 0.04) 50%) !important;
+  border: none !important;
+}
+.skeuo-line-vertical {
+  width: 2px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 50%, rgba(255, 255, 255, 0.04) 50%) !important;
+  border: none !important;
+}
+
+/* Rust gradient text */
+.text-rust-gradient {
+  background: linear-gradient(135deg, #E27E5A 0%, #C95A32 50%, #9A3E1D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Static subtle grain overlay (0% CPU/GPU overhead) */
+.grain-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.2;
+}
+
+/* Warm mesh gradient background */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201, 90, 50, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(110, 142, 117, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(90, 122, 142, 0.02) 0%, transparent 50%),
+    #08080A;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E1E26;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2E2E38;
+}
+
+/* Focus ring override */
+*:focus-visible {
+  outline: 2px solid rgba(201, 90, 50, 0.4);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT & SPACING HARDENING
+   ═══════════════════════════════════════════ */
+header {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+main {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+@media (min-width: 768px) {
+  header {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+  main {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+}
+
+/* Guarantee max-w-7xl constraint and centering works flawlessly */
+.max-w-7xl {
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
