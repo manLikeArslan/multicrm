@@ -56,43 +56,10 @@ export default function RegisterPage() {
 
   const onSubmit = async (values: RegisterInput) => {
     setIsLoading(true);
-    try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        toast.error(result.error || 'Registration failed. Please try again.');
-        setIsLoading(false);
-        return;
-      }
-
-      toast.success('Company and admin created successfully! Signing in...');
-
-      // Auto login after registration
-      const loginResult = await signIn('credentials', {
-        email: values.work_email,
-        password: values.password,
-        redirect: false,
-      });
-
-      if (loginResult?.error) {
-        toast.error('Auto login failed. Please sign in manually.');
-        router.push('/login');
-      } else {
-        toast.success('Successfully logged in!');
-        router.refresh();
-        router.push('/dashboard');
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      toast.error('An unexpected error occurred. Please try again.');
+    setTimeout(() => {
+      toast.error('Company registration is currently closed or restricted in production. Please contact support.');
       setIsLoading(false);
-    }
+    }, 800);
   };
 
   return (

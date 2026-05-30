@@ -150,10 +150,6 @@ export default function LoginPage() {
             </Form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 pt-0 pb-8 text-center text-sm text-[#AFA897]">
-            <div className="text-xs flex items-center justify-center gap-1.5 bg-[#08080A]/30 border border-border/50 px-3 py-1.5 rounded-full text-[#C95A32] max-w-fit mx-auto font-medium">
-              <Sparkles className="h-3 w-3" />
-              Demo: admin@nexusdata.io / Admin1234!
-            </div>
             <div>
               Don't have an account?{' '}
               <Link href="/register" className="text-[#C95A32] hover:text-[#E27E5A] font-medium transition-colors">

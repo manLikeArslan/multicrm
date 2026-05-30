@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import {
   LayoutDashboard,
   Users,
@@ -20,6 +20,7 @@ import {
   ChevronRight,
   Sparkles,
   Hexagon,
+  LogOut,
 } from 'lucide-react';
 
 interface SidebarItem {
@@ -138,9 +139,20 @@ export default function AppSidebar() {
       </div>
 
       {/* Sidebar Footer */}
-      <div className="p-3 border-t border-[#1E1E26]/60 bg-[#050506]/50 text-center flex flex-col items-center">
+      <div className="p-3 border-t border-[#1E1E26]/60 bg-[#050506]/50 flex flex-col gap-2">
+        <button
+          onClick={() => signOut({ callbackUrl: '/login' })}
+          className={`flex items-center gap-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 cursor-pointer text-[#C84630] hover:bg-red-950/20 hover:text-red-400 w-full ${
+            isCollapsed ? 'justify-center px-0' : 'px-3 justify-start'
+          }`}
+          title={isCollapsed ? "Log out" : undefined}
+        >
+          <LogOut className="h-[18px] w-[18px] flex-shrink-0" />
+          {!isCollapsed && <span>Log out</span>}
+        </button>
+
         {!isCollapsed && (
-          <div className="flex items-center gap-2 py-1.5">
+          <div className="flex items-center justify-center gap-2 py-1 border-t border-[#1E1E26]/30 mt-1">
             <Hexagon className="h-3.5 w-3.5 text-[#C95A32]/40" />
             <span className="text-[10px] text-[#AFA897]/50 font-medium tracking-wider select-none">
               MULTICRM v1.0
@@ -148,7 +160,9 @@ export default function AppSidebar() {
           </div>
         )}
         {isCollapsed && (
-          <Hexagon className="h-3.5 w-3.5 text-[#C95A32]/40 my-1" />
+          <div className="flex justify-center border-t border-[#1E1E26]/30 pt-2 mt-1">
+            <Hexagon className="h-3.5 w-3.5 text-[#C95A32]/40" />
+          </div>
         )}
       </div>
     </aside>
